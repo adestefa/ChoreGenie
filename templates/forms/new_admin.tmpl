@@ -1,0 +1,132 @@
+
+
+
+
+<!-- /templates/forms/new_admin.tmpl -->
+<form action="/zbin/saveAdmin.php" method="post">
+<input type="hidden" name="admin" value="1" />
+<input type="hidden" name="rating" value="-1" />
+
+<table border="0" class="table-user-create">
+<tr><td colspan="2" align="left" class="table-header-1">Account</td></tr>
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr><td><b>Type</b></td><td>##SELECT-TYPE##</td></tr>
+<tr><td><b>User name</b></td><td><input type="text" name="username" size="20" maxlength="20">(max 20 chars)</td></tr>
+<tr><td><b>Email</b></td><td><input type="text" name="email" size="60"></td></tr>
+<tr><td><b>Pass</b></td><td><input type="password" name="pass" size="10"></td></tr>
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr><td colspan="2">&nbsp;</td></tr>
+
+
+
+
+<tr><td colspan="2" align="left" class="table-header-1">Contact information</td></tr>
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr><td><b>First</b></td><td><input type="text" name="first" size="60"></td></tr>
+<tr><td><b>Last</b></td><td><input type="text" name="last" size="60"></td></tr>
+<tr><td><b>Phone</b></td><td><input type="text" name="phone" size="15" ></td></tr>
+<tr><td><b>Street</b></td><td><input type="text" name="street" size="60"></td></tr>
+<tr><td><b>City</b></td><td><input type="text" name="city" size="60"></td></tr>
+<tr><td><b>State</b></td><td><input type="text" name="state" size="2" maxlength="2"></td></tr>
+<tr><td><b>Zipcode</b></td><td><input type="text" name="zip" size="15"></td></tr>
+<tr><td><b>Country</b></td>
+<td>
+<select name="country">
+<option value="planetwide/select/selector.html">Select one</option>
+<option value="ai-en">Anguilla - English</option>
+<option value="ag-en">Antigua and Barbuda - English</option>
+<option value="ar-es">Argentina - Spanish</option>
+<option value="aw-en">Aruba - English</option>
+<option value="au-en">Australia - English</option>
+<option value="at-de">Austria - German</option>
+<option value="bs-en">Bahamas - English</option>
+<option value="bd-en">Bangladesh - English</option>
+<option value="bb-en">Barbados - English</option>
+<option value="be-en">Belgium - English</option>
+<option value="be-fr">Belgium - French</option>
+<option value="be-nl">Belgium - Dutch</option>
+<option value="bm-en">Bermuda - English</option>
+<option value="bo-es">Bolivia - Spanish</option>
+<option value="br-pt">Brazil - Portuguese</option>
+<option value="vg-en">British Virgin Islands - English</option>
+<option value="bg-bg">Bulgaria - Bulgarian</option>
+<option value="ca-en">Canada - English</option>
+<option value="ca-fr">Canada - French</option>
+<option value="ky-en">Cayman Islands - English</option>
+<option value="cl-es">Chile - Spanish</option>
+<option value="cn-zh">China - Chinese (Simplified)</option>
+<option value="co-es">Colombia - Spanish</option>
+<option value="hr-hr">Croatia - Croatian</option>
+<option value="cy-en">Cyprus - English</option>
+<option value="cz-cs">Czech Republic - Czech</option>
+<option value="dk-da">Denmark - Danish</option>
+<option value="dm-en">Dominica - English</option>
+<option value="ec-es">Ecuador - Spanish</option>
+<option value="eg-en">Egypt - English</option>
+<option value="ee-et">Estonia - Estonian</option>
+<option value="fi-fi">Finland - Finnish</option>
+<option value="fr-fr">France - French</option>
+<option value="de-de">Germany - German</option>
+<option value="gr-el">Greece - Greek</option>
+<option value="gd-en">Grenada - English</option>
+<option value="gy-en">Guyana - English</option>
+<option value="hk-en">Hong Kong S.A.R. of China - English</option>
+<option value="hu-hu">Hungary - Hungarian</option>
+<option value="in-en">India - English</option>
+<option value="id-en">Indonesia - English</option>
+<option value="ie-en">Ireland - English</option>
+<option value="il-he">Israel - Hebrew</option>
+<option value="it-it">Italy - Italian</option>
+<option value="jm-en">Jamaica - English</option>
+<option value="jp-ja">Japan - Japanese</option>
+<option value="kr-ko">Korea, Republic of - Korean</option>
+<option value="lv-lv">Latvia - Latvian</option>
+<option value="lt-lt">Lithuania - Lithuanian</option>
+<option value="my-en">Malaysia - English</option>
+<option value="mx-es">Mexico - Spanish</option>
+<option value="ms-en">Montserrat - English</option>
+<option value="nl-nl">Netherlands - Dutch</option>
+<option value="an-en">Netherlands Antilles - English</option>
+<option value="nz-en">New Zealand - English</option>
+<option value="no-no">Norway - Norwegian</option>
+<option value="pk-en">Pakistan - English</option>
+<option value="py-es">Paraguay - Spanish</option>
+<option value="pe-es">Peru - Spanish</option>
+<option value="ph-en">Philippines - English</option>
+<option value="pl-pl">Poland - Polish</option>
+<option value="pt-pt">Portugal - Portuguese</option>
+<option value="ro-ro">Romania - Romanian</option>
+<option value="ru-ru">Russian Federation - Russian</option>
+<option value="kn-en">Saint Kitts and Nevis - English</option>
+<option value="lc-en">Saint Lucia - English</option>
+<option value="vc-en">Saint Vincent and the Grenadines - English</option>
+<option value="cs-sr">Serbia and Montenegro - Serbian</option>
+<option value="sg-en">Singapore - English</option>
+<option value="sk-sk">Slovakia - Slovak</option>
+<option value="si-sl">Slovenia - Slovenian</option>
+<option value="za-en">South Africa - English</option>
+<option value="es-es">Spain - Spanish</option>
+<option value="lk-en">Sri Lanka - English</option>
+<option value="sr-en">Suriname - English</option>
+<option value="se-sv">Sweden - Swedish</option>
+<option value="ch-de">Switzerland - German</option>
+<option value="ch-fr">Switzerland - French</option>
+<option value="tw-zh">Taiwan - Chinese (Traditional)</option>
+<option value="th-en">Thailand - English</option>
+<option value="tt-en">Trinidad and Tobago - English</option>
+<option value="tr-tr">Turkey - Turkish</option>
+<option value="tc-en">Turks and Caicos Islands - English</option>
+<option value="uk-en">United Kingdom - English</option>
+<option value="us-en" SELECTED>United States - English</option>
+<option value="uy-es">Uruguay - Spanish</option>
+<option value="ve-es">Venezuela - Spanish</option>
+<option value="vn-en">Vietnam - English</option>
+</select>
+</td></tr>
+
+
+
+<tr><td align="center" colspan="2"><input type="submit" value="save" /></td></tr>
+</table>
+
+</form>

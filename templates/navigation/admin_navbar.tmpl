@@ -1,0 +1,112 @@
+
+<!-- user_navbar.tmpl -->
+<table>
+ <tr><td>
+
+<!-- Settings -->
+<table class="table-nav" border="0" cellspacing="0" cellpadding="0" >
+<tr><td class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/top.gif" width="144" height="5" /></td></tr>
+<tr><td class="head">##USERNAME##</td></tr>
+<tr><td class="line" valign="middle"><img src="../imgs/##IMG_STYLE##/spacer.gif" width="144" height="1" /></td></tr>
+<tr><td class="##home##"><a href="home.php" class="nav">Home</a></td></tr>
+<tr><td class="##new_admin##"><a href="new_admin.php" class="nav">Register Admin</a></td></tr>
+<tr><td class="##new_user##"><a href="new_user.php" class="nav">Register User</a></td></tr>
+<tr><td class="##settings##"><a href="settings.php" class="nav">Style</a></td></tr>
+<tr><td class="##logout##"><a href="#" onclick="confirmLogout()" class="nav">Logout</a></td></tr>
+<tr><td class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/btm.gif" /></td></tr>
+</table>
+<script>
+function confirmLogout(){
+if(confirm("Do you want to logout?")){
+ location.href="logout.php"
+ }
+}
+</script>
+
+
+<!-- User Groups -->
+<br />
+<table class="table-nav" border="0" cellspacing="0" cellpadding="0" >
+<tr><td class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/top.gif" width="144" height="5" /></td></tr>
+<tr><td class="head">Groups</td></tr>
+<tr><td class="line" valign="middle"><img src="../imgs/##IMG_STYLE##/spacer.gif" width="144" height="1" /></td></tr>
+<tr><td class="##new_group##"><a href="new_group.php" class="nav">New group</a></td></tr>
+<tr><td class="##viewGroups##"><a href="viewGroups.php" class="nav">Choose group</a></td></tr>
+<tr><td class="##logout##"><a href="groups.php" class="nav">Your groups</a></td></tr>
+<tr><td class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/btm.gif" /></td></tr>
+</table>
+
+
+<!-- Users -->
+<br />
+<table class="table-nav" border="0" cellspacing="0" cellpadding="0" >
+<tr><td class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/top.gif" width="144" height="5" /></td></tr>
+<tr><td class="head">Users</td></tr>
+<tr><td class="line" valign="middle"><img src="../imgs/##IMG_STYLE##/spacer.gif" width="144" height="1" /></td></tr>
+<tr><td class="##create_user##"><a href="create_user.php" class="nav">Add User</a></td></tr>
+<tr><td class="##viewUsers##"><a href="viewUsers.php" class="nav">Edit User</a></td></tr>
+<tr><td class="##illegalRedemptions##"><a href="illegalRedemptions.php" class="nav">Illegal Redemptions</a></td></tr>
+<tr><td class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/btm.gif" /></td></tr>
+</table>
+
+<!-- Accounts -->
+<br />
+<table class="table-nav" border="0" cellspacing="0" cellpadding="0" >
+<tr><td class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/top.gif" width="144" height="5" /></td></tr>
+<tr><td class="head">Account</td></tr>
+<tr><td class="line" valign="middle"><img src="../imgs/##IMG_STYLE##/spacer.gif" width="144" height="1" /></td></tr>
+<tr><td class="##account##"><a href="account.php" class="nav">My account</a></td></tr>
+<tr><td class="##account_rate##"><a href="account_rate.php" class="nav">User Exchange Rate</a></td></tr>
+<tr><td  class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/btm.gif" /></td></tr>
+</table>
+
+
+<!-- Tickets -->
+<br />
+<table class="table-nav" border="0" cellspacing="0" cellpadding="0" >
+<tr><td class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/top.gif" width="144" height="5" /></td></tr>
+<tr><td class="head">Tickets</td></tr>
+<tr><td class="line" valign="middle"><img src="../imgs/##IMG_STYLE##/spacer.gif" width="144" height="1" /></td></tr>
+<tr><td class="##chorePointMint##"><a href="chorePointMint.php" class="nav">Create Tickets</a></td></tr>
+<tr><td class="##chorePointPrinter##"><a href="chorePointPrinter.php" class="nav">Print Tickets</a></td></tr>
+<tr><td class="##chorePointManager##"><a href="chorePointManager.php" class="nav">Manage Tickets</a></td></tr>
+<tr><td  class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/btm.gif" /></td></tr>
+</table>
+
+
+
+<!-- Chores -->
+<br />
+<table class="table-nav" border="0" cellspacing="0" cellpadding="0" >
+<tr><td class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/top.gif" width="144" height="5" /></td></tr>
+<tr><td class="head">Chores</td></tr>
+<tr><td class="line" valign="middle"><img src="../imgs/##IMG_STYLE##/spacer.gif" width="144" height="1" /></td></tr>
+<tr><td class="##create_chore##"><a href="create_chore.php" class="nav">Add Chore</a></td></tr>
+<tr><td class="##chores##"><a href="chores.php" class="nav">View Chores</a></td></tr>
+<tr><td class="##chore_edit##"><a href="chores.php" class="nav">Edit Chore</a></td></tr>
+<tr><td class="##chore_list##"><a href="chores.php" class="nav">Pick Chore</a></td></tr>
+<tr><td class="##chore_select_remove##"><a href="chore_select_remove.php" class="nav">Remove Chore</a></td></tr>
+<tr><td  class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/btm.gif" /></td></tr>
+</table>
+
+
+<!-- Prizes -->
+<br />
+<table class="table-nav" border="0" cellspacing="0" cellpadding="0" >
+<tr><td class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/top.gif" width="144" height="5" /></td></tr>
+<tr><td class="head">Prizes</td></tr>
+<tr><td class="line" valign="middle"><img src="../imgs/##IMG_STYLE##/spacer.gif" width="144" height="1" /></td></tr>
+<tr><td class="##prize_new##"><a href="prize_new.php" class="nav">Add a new prize</a></td></tr>
+<tr><td class="##prize_edit_select##"><a href="prize_edit_select.php" class="nav">Edit prize</a></td></tr>
+<tr><td class="##prize_view_all##"><a href="prize_view_all.php" class="nav">View All prizes</a></td></tr>
+<tr><td class="##prize_select##"><a href="prize_select.php" class="nav">Add to Wish list</a></td></tr>
+<tr><td class="##prize_wish_list##"><a href="prize_wish_list.php" class="nav">View Wish list</a></td></tr>
+<tr><td class="##prize_ordered##"><a href="prize_ordered.php" class="nav">View Ordered prizes</a></td></tr>
+<tr><td class="img" valign="middle"><img src="../imgs/##IMG_STYLE##/btm.gif" /></td></tr>
+</table>
+
+
+</td></tr>
+<tr><td><a href="backdoor.php" class="nav">...</a></td></tr>
+<tr><td><a href="msg_test.php" class="nav">msg</a></td></tr>
+</table>

@@ -1,0 +1,726 @@
+use `chore2_choregenie`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `account`
+-- 
+
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE IF NOT EXISTS `account` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `userID` mediumint(9) NOT NULL default '0',
+  `exchangeRate` float NOT NULL default '0.25',
+  `balance` mediumint(9) NOT NULL default '0',
+  `dateCreated` date NOT NULL default '0000-00-00',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=20 ;
+
+-- 
+-- Dumping data for table `account`
+-- 
+
+INSERT INTO `account` (`id`, `userID`, `exchangeRate`, `balance`, `dateCreated`) VALUES (4, 36, 0.25, 11, '0000-00-00');
+INSERT INTO `account` (`id`, `userID`, `exchangeRate`, `balance`, `dateCreated`) VALUES (5, 37, 1, 30, '0000-00-00');
+INSERT INTO `account` (`id`, `userID`, `exchangeRate`, `balance`, `dateCreated`) VALUES (16, 44, 0.25, 5, '2005-08-15');
+INSERT INTO `account` (`id`, `userID`, `exchangeRate`, `balance`, `dateCreated`) VALUES (15, 43, 0.25, 5, '2005-08-15');
+INSERT INTO `account` (`id`, `userID`, `exchangeRate`, `balance`, `dateCreated`) VALUES (14, 42, 0.25, 5, '0000-00-00');
+INSERT INTO `account` (`id`, `userID`, `exchangeRate`, `balance`, `dateCreated`) VALUES (13, 41, 0.25, 105, '0000-00-00');
+INSERT INTO `account` (`id`, `userID`, `exchangeRate`, `balance`, `dateCreated`) VALUES (10, 38, 0.25, 202, '0000-00-00');
+INSERT INTO `account` (`id`, `userID`, `exchangeRate`, `balance`, `dateCreated`) VALUES (11, 39, 0.25, 73, '0000-00-00');
+INSERT INTO `account` (`id`, `userID`, `exchangeRate`, `balance`, `dateCreated`) VALUES (12, 40, 5, 245, '0000-00-00');
+INSERT INTO `account` (`id`, `userID`, `exchangeRate`, `balance`, `dateCreated`) VALUES (17, 57, 0.25, 5, '2005-08-15');
+INSERT INTO `account` (`id`, `userID`, `exchangeRate`, `balance`, `dateCreated`) VALUES (18, 58, 0.25, 5, '2005-08-15');
+INSERT INTO `account` (`id`, `userID`, `exchangeRate`, `balance`, `dateCreated`) VALUES (19, 70, 0.25, 5, '2005-08-15');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `category`
+-- 
+
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `name` varchar(100) NOT NULL default '',
+  `description` longtext NOT NULL,
+  `image` longtext NOT NULL,
+  `authorID` mediumint(9) NOT NULL default '0',
+  `typeID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=6 ;
+
+-- 
+-- Dumping data for table `category`
+-- 
+
+INSERT INTO `category` (`id`, `name`, `description`, `image`, `authorID`, `typeID`) VALUES (1, 'Pets and bedding', 'The care and maintenance of family Pets and related items.', '', 37, 1);
+INSERT INTO `category` (`id`, `name`, `description`, `image`, `authorID`, `typeID`) VALUES (2, 'Kitchen/Dining', 'Chores and activities related to Kitchen and Dining rooms, including dishes, tables floors and other surfaces.', '', 37, 1);
+INSERT INTO `category` (`id`, `name`, `description`, `image`, `authorID`, `typeID`) VALUES (3, 'Attic/Basement', 'Chores and activities in the Attic or Basement.', '', 37, 1);
+INSERT INTO `category` (`id`, `name`, `description`, `image`, `authorID`, `typeID`) VALUES (4, 'Personal space', 'Chores and activites related to the maintenance of a persons Household space in including room or portion of room.', '', 37, 1);
+INSERT INTO `category` (`id`, `name`, `description`, `image`, `authorID`, `typeID`) VALUES (5, 'Family space', 'Chores and activities related to the maintenance of a shared space like a Den or playroom.', '', 37, 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `category_chore_rel`
+-- 
+
+DROP TABLE IF EXISTS `category_chore_rel`;
+CREATE TABLE IF NOT EXISTS `category_chore_rel` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `choreID` mediumint(9) NOT NULL default '0',
+  `categoryID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=5 ;
+
+-- 
+-- Dumping data for table `category_chore_rel`
+-- 
+
+INSERT INTO `category_chore_rel` (`id`, `choreID`, `categoryID`) VALUES (1, 12, 1);
+INSERT INTO `category_chore_rel` (`id`, `choreID`, `categoryID`) VALUES (2, 15, 1);
+INSERT INTO `category_chore_rel` (`id`, `choreID`, `categoryID`) VALUES (3, 17, 1);
+INSERT INTO `category_chore_rel` (`id`, `choreID`, `categoryID`) VALUES (4, 18, 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `chore`
+-- 
+
+DROP TABLE IF EXISTS `chore`;
+CREATE TABLE IF NOT EXISTS `chore` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `userID` mediumint(9) NOT NULL default '0',
+  `dateCreated` date NOT NULL default '0000-00-00',
+  `name` varchar(50) NOT NULL default '',
+  `description` text,
+  `image` varchar(100) default NULL,
+  `point_value` mediumint(9) NOT NULL default '1',
+  `complexityID` mediumint(9) NOT NULL default '0',
+  `categoryID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=21 ;
+
+-- 
+-- Dumping data for table `chore`
+-- 
+
+INSERT INTO `chore` (`id`, `userID`, `dateCreated`, `name`, `description`, `image`, `point_value`, `complexityID`, `categoryID`) VALUES (12, 15, '2005-05-11', 'sweep the upstairs', 'Sweep the upstairs wood floors including the dinning room, tv area, stairs, hallway.', '', 9, 4, 0);
+INSERT INTO `chore` (`id`, `userID`, `dateCreated`, `name`, `description`, `image`, `point_value`, `complexityID`, `categoryID`) VALUES (14, 15, '2005-05-11', 'clean the kitchen', 'this includes the counter tops, table and under the TV. Wash all dishes and clean the stove if needed.', '', 15, 8, 0);
+INSERT INTO `chore` (`id`, `userID`, `dateCreated`, `name`, `description`, `image`, `point_value`, `complexityID`, `categoryID`) VALUES (15, 15, '2005-05-11', 'make your bed', 'this includes cleaning your bed headboard and floor', '', 7, 6, 0);
+INSERT INTO `chore` (`id`, `userID`, `dateCreated`, `name`, `description`, `image`, `point_value`, `complexityID`, `categoryID`) VALUES (17, 15, '2005-05-11', 'clean up the yard', 'clean the front and back yards including putting away bikes and toys and picking up garbage.', '', 15, 6, 0);
+INSERT INTO `chore` (`id`, `userID`, `dateCreated`, `name`, `description`, `image`, `point_value`, `complexityID`, `categoryID`) VALUES (18, 37, '2005-07-29', 'Clean the bird cage', 'Change the paper and scrape the purches and clean the foor and water cups.', '', 10, 4, 0);
+INSERT INTO `chore` (`id`, `userID`, `dateCreated`, `name`, `description`, `image`, `point_value`, `complexityID`, `categoryID`) VALUES (19, 37, '2005-08-14', 'No Temper Tantrums', 'Do not act out of control or show singns of rage to others in the group. You must control your actions regardless of the emotions you may feel.', 'http://images.google.com/imgres?imgurl=http://www.mofizixgr4fix.com/images/tantrum.gif&imgrefurl=htt', 20, 10, 0);
+INSERT INTO `chore` (`id`, `userID`, `dateCreated`, `name`, `description`, `image`, `point_value`, `complexityID`, `categoryID`) VALUES (20, 37, '2005-08-26', 'Clean Office', 'Clean the office including vaccume, wipe down desk, throw away garbage.', '', 4, 4, 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `chorePoint`
+-- 
+
+DROP TABLE IF EXISTS `chorePoint`;
+CREATE TABLE IF NOT EXISTS `chorePoint` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `dateCreated` date NOT NULL default '0000-00-00',
+  `adminID` mediumint(9) NOT NULL default '0',
+  `value` int(11) NOT NULL default '0',
+  `userID` mediumint(9) default NULL,
+  `serial` varchar(20) NOT NULL default '0',
+  `dateExchanged` date NOT NULL default '0000-00-00',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=111 ;
+
+-- 
+-- Dumping data for table `chorePoint`
+-- 
+
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (1, '2005-08-31', 37, 50, 0, 'D0759CD37482', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (2, '2005-08-31', 37, 50, 0, 'D0759CD57161', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (3, '2005-08-31', 37, 50, 37, 'D0759CD33475', '2005-08-31');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (4, '2005-08-31', 37, 50, 0, 'D0759CD31269', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (5, '2005-08-31', 37, 50, 0, 'D0759CD61477', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (6, '2005-08-31', 37, 50, 0, 'D0759CD26797', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (7, '2005-08-31', 37, 50, 0, 'D0759CD51857', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (8, '2005-08-31', 37, 50, 0, 'D0759CD43265', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (9, '2005-08-31', 37, 50, 0, 'D0759CD10833', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (10, '2005-08-31', 37, 50, 0, 'D0759CD77680', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (11, '2005-08-31', 37, 50, 0, 'D0759CD31771', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (12, '2005-08-31', 37, 50, 0, 'D0759CD14214', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (13, '2005-08-31', 37, 50, 0, 'D0759CD86930', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (14, '2005-08-31', 37, 50, 0, 'D0759CD84255', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (15, '2005-08-31', 37, 50, 0, 'D0759CD81598', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (16, '2005-08-31', 37, 50, 0, 'D0759CD43965', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (17, '2005-08-31', 37, 50, 0, 'D0759CD79050', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (18, '2005-08-31', 37, 50, 0, 'D0759CD19421', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (19, '2005-08-31', 37, 50, 0, 'D0759CD46460', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (20, '2005-08-31', 37, 50, 0, 'D0759CD50276', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (21, '2005-08-31', 37, 10, 0, 'D0759CD98152', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (22, '2005-08-31', 37, 10, 0, 'D0759CD30324', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (23, '2005-08-31', 37, 10, 0, 'D0759CD5912', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (24, '2005-08-31', 37, 10, 0, 'D0759CD34183', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (25, '2005-08-31', 37, 10, 0, 'D0759CD15700', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (26, '2005-08-31', 37, 10, 0, 'D0759CD68289', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (27, '2005-08-31', 37, 10, 0, 'D0759CD71669', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (28, '2005-08-31', 37, 10, 0, 'D0759CD50081', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (29, '2005-08-31', 37, 10, 0, 'D0759CD51916', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (30, '2005-08-31', 37, 10, 0, 'D0759CD11148', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (31, '2005-08-31', 37, 5, 0, 'D0759CD47011', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (32, '2005-08-31', 37, 5, 0, 'D0759CD62026', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (33, '2005-08-31', 37, 5, 0, 'D0759CD62639', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (34, '2005-08-31', 37, 5, 0, 'D0759CD79471', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (35, '2005-08-31', 37, 5, 0, 'D0759CD13033', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (36, '2005-08-31', 37, 5, 0, 'D0759CD82424', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (37, '2005-08-31', 37, 5, 0, 'D0759CD36389', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (38, '2005-08-31', 37, 5, 0, 'D0759CD41065', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (39, '2005-08-31', 37, 5, 0, 'D0759CD22842', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (40, '2005-08-31', 37, 5, 0, 'D0759CD90656', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (41, '2005-08-31', 37, 1, 0, 'D0759CD91663', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (42, '2005-08-31', 37, 1, 0, 'D0759CD36938', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (43, '2005-08-31', 37, 1, 0, 'D0759CD39877', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (44, '2005-08-31', 37, 1, 0, 'D0759CD21080', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (45, '2005-08-31', 37, 1, 0, 'D0759CD41730', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (46, '2005-08-31', 37, 1, 0, 'D0759CD35559', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (47, '2005-08-31', 37, 1, 0, 'D0759CD80684', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (48, '2005-08-31', 37, 1, 0, 'D0759CD73420', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (49, '2005-08-31', 37, 1, 0, 'D0759CD58078', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (50, '2005-08-31', 37, 1, 0, 'D0759CD4396', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (51, '2005-08-31', 37, 50, 0, 'D0759CD56678', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (52, '2005-08-31', 37, 50, 0, 'D0759CD12175', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (53, '2005-08-31', 37, 50, 0, 'D0759CD4465', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (54, '2005-08-31', 37, 50, 0, 'D0759CD56054', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (55, '2005-08-31', 37, 50, 0, 'D0759CD60424', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (56, '2005-08-31', 37, 50, 0, 'D0759CD10009', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (57, '2005-08-31', 37, 50, 0, 'D0759CD1461', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (58, '2005-08-31', 37, 50, 0, 'D0759CD5713', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (59, '2005-08-31', 37, 50, 0, 'D0759CD25109', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (60, '2005-08-31', 37, 50, 0, 'D0759CD21849', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (61, '2005-08-31', 37, 20, 0, 'C9C07FD68056', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (62, '2005-08-31', 37, 20, 0, 'C9C07FD37962', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (63, '2005-08-31', 37, 20, 0, 'C9C07FD59622', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (64, '2005-08-31', 37, 20, 0, 'C9C07FD76840', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (65, '2005-08-31', 37, 20, 0, 'C9C07FD36469', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (66, '2005-08-31', 37, 20, 0, 'C9C07FD22332', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (67, '2005-08-31', 37, 20, 0, 'C9C07FD83321', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (68, '2005-08-31', 37, 20, 0, 'C9C07FD29726', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (69, '2005-08-31', 37, 20, 0, 'C9C07FD9586', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (70, '2005-08-31', 37, 20, 0, 'C9C07FD94689', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (71, '2005-08-31', 37, 5, 0, 'C9C07FD45550', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (72, '2005-08-31', 37, 5, 0, 'C9C07FD97928', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (73, '2005-08-31', 37, 5, 0, 'C9C07FD52680', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (74, '2005-08-31', 37, 5, 0, 'C9C07FD54034', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (75, '2005-08-31', 37, 5, 0, 'C9C07FD83066', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (76, '2005-08-31', 37, 5, 0, 'C9C07FD65080', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (77, '2005-08-31', 37, 5, 0, 'C9C07FD85894', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (78, '2005-08-31', 37, 5, 0, 'C9C07FD25590', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (79, '2005-08-31', 37, 5, 0, 'C9C07FD38179', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (80, '2005-08-31', 37, 5, 0, 'C9C07FD80317', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (81, '2005-08-31', 37, 1, 0, 'AED6AF53099', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (82, '2005-08-31', 37, 1, 0, 'AED6AF533523', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (83, '2005-08-31', 37, 1, 0, 'AED6AF553046', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (84, '2005-08-31', 37, 1, 0, 'AED6AF538840', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (85, '2005-08-31', 37, 1, 0, 'AED6AF51838', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (86, '2005-08-31', 37, 1, 0, 'AED6AF595409', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (87, '2005-08-31', 37, 1, 0, 'AED6AF535545', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (88, '2005-08-31', 37, 1, 0, 'AED6AF554408', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (89, '2005-08-31', 37, 1, 0, 'AED6AF510603', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (90, '2005-08-31', 37, 1, 0, 'AED6AF551396', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (91, '2005-09-02', 37, 20, 0, 'DCF572025255', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (92, '2005-09-02', 37, 20, 0, 'DCF572081971', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (93, '2005-09-02', 37, 20, 0, 'DCF572078821', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (94, '2005-09-02', 37, 20, 0, 'DCF572048752', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (95, '2005-09-02', 37, 20, 0, 'DCF572058413', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (96, '2005-09-02', 37, 20, 0, 'DCF572077656', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (97, '2005-09-02', 37, 20, 0, 'DCF572044765', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (98, '2005-09-02', 37, 20, 0, 'DCF572010771', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (99, '2005-09-02', 37, 20, 0, 'DCF572082582', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (100, '2005-09-02', 37, 20, 0, 'DCF572020581', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (101, '2005-09-12', 37, 10, 0, 'F60E5D479221', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (102, '2005-09-12', 37, 10, 0, 'F60E5D439433', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (103, '2005-09-12', 37, 10, 0, 'F60E5D448955', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (104, '2005-09-12', 37, 10, 0, 'F60E5D425374', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (105, '2005-09-12', 37, 10, 0, 'F60E5D411950', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (106, '2005-09-12', 37, 10, 0, 'F60E5D452769', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (107, '2005-09-12', 37, 10, 0, 'F60E5D431978', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (108, '2005-09-12', 37, 10, 0, 'F60E5D471443', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (109, '2005-09-12', 37, 10, 0, 'F60E5D412931', '0000-00-00');
+INSERT INTO `chorePoint` (`id`, `dateCreated`, `adminID`, `value`, `userID`, `serial`, `dateExchanged`) VALUES (110, '2005-09-12', 37, 10, 0, 'F60E5D417135', '0000-00-00');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `chore_category_rel`
+-- 
+
+DROP TABLE IF EXISTS `chore_category_rel`;
+CREATE TABLE IF NOT EXISTS `chore_category_rel` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `choreID` mediumint(9) NOT NULL default '0',
+  `categoryID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=5 ;
+
+-- 
+-- Dumping data for table `chore_category_rel`
+-- 
+
+INSERT INTO `chore_category_rel` (`id`, `choreID`, `categoryID`) VALUES (1, 12, 1);
+INSERT INTO `chore_category_rel` (`id`, `choreID`, `categoryID`) VALUES (2, 15, 1);
+INSERT INTO `chore_category_rel` (`id`, `choreID`, `categoryID`) VALUES (3, 17, 1);
+INSERT INTO `chore_category_rel` (`id`, `choreID`, `categoryID`) VALUES (4, 18, 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `contact`
+-- 
+
+DROP TABLE IF EXISTS `contact`;
+CREATE TABLE IF NOT EXISTS `contact` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `userID` mediumint(9) NOT NULL default '0',
+  `first` varchar(100) NOT NULL default '',
+  `last` varchar(100) NOT NULL default '',
+  `phone` varchar(20) NOT NULL default '',
+  `street` varchar(100) NOT NULL default '',
+  `city` varchar(100) NOT NULL default '',
+  `state` char(2) NOT NULL default '',
+  `zip` varchar(100) NOT NULL default '',
+  `Country` varchar(100) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `contact`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `frequency`
+-- 
+
+DROP TABLE IF EXISTS `frequency`;
+CREATE TABLE IF NOT EXISTS `frequency` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `interval` varchar(100) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=15 ;
+
+-- 
+-- Dumping data for table `frequency`
+-- 
+
+INSERT INTO `frequency` (`id`, `interval`) VALUES (1, 'once a day');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (2, 'once a week');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (3, 'once a month');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (4, 'once a year');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (5, 'every Monday');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (6, 'every Tuesday');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (7, 'every Wednesday');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (8, 'every Thursday');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (9, 'every Friday');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (10, 'every Saturday');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (11, 'every Sunday');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (12, 'every morning');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (13, 'every evening');
+INSERT INTO `frequency` (`id`, `interval`) VALUES (14, 'many times a day');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `group`
+-- 
+
+DROP TABLE IF EXISTS `group`;
+CREATE TABLE IF NOT EXISTS `group` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `name` varchar(50) NOT NULL default '',
+  `timestamp` datetime NOT NULL default '0000-00-00 00:00:00',
+  `typeID` mediumint(9) NOT NULL default '0',
+  `description` longtext NOT NULL,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=15 ;
+
+-- 
+-- Dumping data for table `group`
+-- 
+
+INSERT INTO `group` (`id`, `name`, `timestamp`, `typeID`, `description`) VALUES (1, 'Destefano', '2005-05-18 00:00:00', 1, '');
+INSERT INTO `group` (`id`, `name`, `timestamp`, `typeID`, `description`) VALUES (14, 'Sky', '0000-00-00 00:00:00', 1, 'The Sky''s from NY');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `group_chore_rel`
+-- 
+
+DROP TABLE IF EXISTS `group_chore_rel`;
+CREATE TABLE IF NOT EXISTS `group_chore_rel` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `choreID` mediumint(9) NOT NULL default '0',
+  `groupID` mediumint(9) NOT NULL default '0',
+  `stateID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `group_chore_rel`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `group_prize_rel`
+-- 
+
+DROP TABLE IF EXISTS `group_prize_rel`;
+CREATE TABLE IF NOT EXISTS `group_prize_rel` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `prizeID` mediumint(9) NOT NULL default '0',
+  `groupID` mediumint(9) NOT NULL default '0',
+  `stateID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=1 ;
+
+-- 
+-- Dumping data for table `group_prize_rel`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `log`
+-- 
+
+DROP TABLE IF EXISTS `log`;
+CREATE TABLE IF NOT EXISTS `log` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `timestamp` datetime default NULL,
+  `userID` mediumint(9) NOT NULL default '0',
+  `action` varchar(100) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=10 ;
+
+-- 
+-- Dumping data for table `log`
+-- 
+
+INSERT INTO `log` (`id`, `timestamp`, `userID`, `action`) VALUES (8, '2005-05-13 23:53:08', 36, 'illegal redemption attempt');
+INSERT INTO `log` (`id`, `timestamp`, `userID`, `action`) VALUES (7, '2005-05-13 23:51:34', 36, 'illegal redemption attempt');
+INSERT INTO `log` (`id`, `timestamp`, `userID`, `action`) VALUES (5, '2005-05-13 23:46:27', 36, 'illegal redemption attempt');
+INSERT INTO `log` (`id`, `timestamp`, `userID`, `action`) VALUES (6, '2005-05-13 23:46:54', 36, 'illegal redemption attempt');
+INSERT INTO `log` (`id`, `timestamp`, `userID`, `action`) VALUES (9, NULL, 39, 'illegal redemption attempt');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `orders`
+-- 
+
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `prizeID` mediumint(9) NOT NULL default '0',
+  `userID` mediumint(9) NOT NULL default '0',
+  `dateCreated` date NOT NULL default '0000-00-00',
+  `stateID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
+  KEY `userID` (`userID`)
+) TYPE=MyISAM AUTO_INCREMENT=29 ;
+
+-- 
+-- Dumping data for table `orders`
+-- 
+
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (1, 37, 37, '2005-06-11', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (2, 2, 37, '2005-06-12', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (3, 42, 37, '2005-07-07', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (4, 43, 40, '2005-07-11', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (16, 1, 37, '2005-07-22', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (19, 2, 37, '2005-07-22', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (18, 31, 37, '2005-07-22', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (15, 37, 1, '2005-07-22', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (20, 42, 37, '2005-07-22', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (21, 34, 37, '2005-07-22', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (22, 36, 37, '2005-07-22', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (23, 42, 37, '2005-07-25', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (24, 33, 37, '2005-08-13', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (25, 48, 37, '2005-08-14', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (26, 1, 37, '2005-08-15', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (27, 47, 37, '2005-08-25', 5);
+INSERT INTO `orders` (`id`, `prizeID`, `userID`, `dateCreated`, `stateID`) VALUES (28, 51, 37, '2005-08-31', 5);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `prize`
+-- 
+
+DROP TABLE IF EXISTS `prize`;
+CREATE TABLE IF NOT EXISTS `prize` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `authorID` mediumint(9) NOT NULL default '0',
+  `dateCreated` date NOT NULL default '0000-00-00',
+  `name` varchar(200) NOT NULL default '',
+  `description` longtext,
+  `moneyValue` mediumint(10) unsigned NOT NULL default '1',
+  `image` longtext,
+  `url` longtext NOT NULL,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=53 ;
+
+-- 
+-- Dumping data for table `prize`
+-- 
+
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (1, 7, '0000-00-00', 'pick of gameboy advance game.', 'Gameboy advance game of your choice. d', 25, 'http://www.ebgames.com/ebx_assets/thumbnails/225767.gif', 'http://www.google.com/froogle?q=super+game+boy+game');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (2, 7, '0000-00-00', 'comic book', 'Your choice of comic book.', 5, 'http://www.sachsreport.com/doom%20the%20comic%20book.jpg', '');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (33, 15, '2005-05-11', 'Episode III Game', 'Choose your side, follow the Dark Side or save the galaxy from darkness', 49, 'http://shop.starwars.com/kernel/imageload?table=cat_images;ttl2=15;like_search=1;key1=1664_t;key2=-100_t', 'http://www.google.com/froogle?q=Episode+III+Game&btnG=Search+Froogle');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (31, 15, '2005-05-12', 'Easton BZ700 Triple 7 Scandium Alloy Senior Large Baseball Bat', 'Add high-tech scandium alloy to an extended barrel design and you get a bat with great performance that''s still durable and affordable. Ultra lightweight for players preferring a lighter bat.\r\nDetermine what bat size is best for \r\n', 94, 'http://i.walmart.com/i/p/00/08/59/25/87/0008592587466_215X215.jpg', 'http://www.walmart.com/catalog/product.gsp?product_id=2569885&cat=4162&type=21&dept=4125&path=0%3A4125%3A4161%3A4162%3A131873');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (34, 15, '2005-05-11', 'Mac Mini', '1.25GHz PowerPC G4\r\n256MB DDR333 SDRAM\r\nATI Radeon 9200 with 32MB DDR video memory\r\n40GB Ultra ATA hard drive\r\nCombo drive\r\nDVI or VGA video output\r\nAirPort Extreme and Bluetooth optiona', 499, 'http://images.apple.com/r/store/infoblock/macmini/images/carrying_box_050111.gif', 'http://store.apple.com/1-800-MY-APPLE/WebObjects/AppleStore.woa/70803/wo/je7CtRpf0aTT2JaQ9WK1NRr0uWQ/0.0.11.1.0.6.23.1.3.1.0.0.0.1.0');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (36, 15, '0000-00-00', 'Apple iPod shuffle 512MB', 'Portable MP3, AAC, AIFF & WAV Player with 512MB Flash Memory for Mac or Windows \r\n', 100, 'http://www.sweetwater.com/images/items/iPodShuf500M.jpg', 'http%3A//www.sweetwater.com/store/detail/%2520iPodShuf500M/');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (37, 39, '0000-00-00', 'SPECK PRODUCTS IM-ST1P SkinTight Mini iPod Skin - Pink', 'Newly designed rubberized skin for the much anticipated Mini iPod / Protects your player from dust, knocks and scratches', 19, 'http://images.jr.com/productimages/SCDIMST1P.PNG?CELL=175,175&QLT=67&FTR=7&CVT=jpeg', 'http://www.jr.com/JRProductPage.process?Product_Code=SCD+IM-ST1P&JRSource=google.datafeed');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (40, 38, '2005-05-15', 'used commodore 64', 'Newer version of Commodore 64. Functionally identical to the original Commodore 64 except newer design and appearance. Uses all regular Commodore accessories and peripherals. Power supply included. 30 day guarantee.', 109, 'http://www.oldsoftware.com/images/64csm.jpg', 'http://www.oldsoftware.com/Commodore.html');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (41, 38, '2005-05-15', 'ThinkPad T42', 'ThinkPad T42 (IBM Think Express Program)', 974, 'https://www-131.ibm.com/content/product_images/en_US/IMG1071_MKT_IMG_FILENAME_1.gif', 'https://www-131.ibm.com/webapp/wcs/stores/servlet/ProductDisplay?productId=8770315&storeId=10025076&langId=-1&catalogId=-840&dualCurrId=130');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (47, 40, '0000-00-00', 'RC Boat Mini', 'Introducing the RC Boat Mini Speed Boat full function Radio Control', 100, 'http://www.savontv.com/im/nwimages/rc-baot-mini-3.jpg', 'http://www.savontv.com/rc-boat-mini.html');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (48, 37, '2005-08-14', 'Xbox All-In-One Bundle With Bonus 48 Game Case!', 'Includes Bonus 48-disc Xbox game case...a 14.82 value!\r\n\r\n', 204, 'http://i.walmart.com/i/p/11/12/99/61/82/1112996182707_215X215.jpg', 'http://www.walmart.com/catalog/product.gsp?dest=9999999997&product_id=3533440&sourceid=0100000030660804502498');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (46, 37, '0000-00-00', 'Dinner with mom', 'Have a night alone with Mom.\r\n', 2, 'http://images.google.com/images?q=tbn:EFEl0KC08qcJ:www.visitmontserrat.com/Romantic%2520couple%25202.jpg', 'http://www.cnn.com');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (39, 39, '0000-00-00', 'iPod Mini 4GB, Green', 'Like any classic fashion icon, iPod mini in kicked-up colors goes with everything: Macs, PCs, sequins and tees. And with up to 18 hours of battery life, it’ll outlast the latest trend. \r\n', 200, 'http://service.pcconnection.com/images/inhouse/5591655.jpg', 'http://www.pcconnection.com/ProductDetail?sku=5591655&SourceID=k22350');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (42, 31, '0000-00-00', 'Rawlings OLB3 Official League Recreational Play Baseball', 'As an official size and weight baseball, the Rawlings® OLB3 Recreational Play Baseball has been designed with a synthetic leather cover for easy gripping and firm handling. Its solid core cork and rubber center, and poly finish wind enhance durability.', 2, 'http://mlb.imageg.net/graphics/product_images/p182778reg.jpg', 'http://shop.mlb.com/product/index.jsp?productId=59035');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (43, 37, '0000-00-00', ' Forest Animals Stained Glass Coloring Book (Paperback)', 'Dimensions (in Inches) 5.75H x 4.25L x 0.25T\r\n', 5, 'http://ak.buy.com/db_assets/prod_images/839/30084839.jpg', 'http://www.buy.com/retail/product.asp?sku=30084839&dcaid=1688');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (44, 37, '2005-10-10', 'Coral Cove Toddler Girls Lovely Flower 1 Pc Bathing Suit', 'Dive into summer with this trendy swim suit from Coral Cove! Flowers with embroidered stems and appliqued petals add pizzazz to this cheery bathing suit. Contrast straps tie together in the back to help prevent straps from sliding off the shoulder. Suit is lined in the front. Exterior is 82% nylon, 18% spandex. Lining is 100% polyester. Hand wash.\r\n', 12, 'http://store1.yimg.com/I/kidsurplus_1845_64782569', 'http://www.kidsurplus.com/bwi-40006106.html');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (49, 37, '2005-08-25', 'Sony PSP - MLB Baseball', 'test', 0, 'http://images.overstock.com/f/102/3117/8h/www.overstock.com/images/products//muze/games/674254.jpg', 'http://www.overstock.com/cgi-bin/d2.cgi?PAGE=PRODUCT&PROD_ID=1431591&cid=25608&fp=F');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (50, 38, '2005-08-27', 'Professor Fizzwizzle', 'Professor Fizzwizzle is a fun, mind-expanding puzzle game, where you take control of the diminutive genius, Professor Fizzwizzle. You must help the professor use his brains and his gadgets to solve each exciting level. Do you have what it takes to get past the Rage-Bots and bring the prof back to his lab?\r\n', 19, 'http://grubbygames.com/images/fizzwizzle_logo.gif', 'http://grubbygames.com/games.php');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (51, 37, '2005-08-31', 'Maximum Green Day', 'New Music CD', 21, 'http://media.bestprices.com/content/music/80/542482.jpg', 'http://www.bestprices.com/cgi-bin/vlink/803680801925BT?source=froogle');
+INSERT INTO `prize` (`id`, `authorID`, `dateCreated`, `name`, `description`, `moneyValue`, `image`, `url`) VALUES (52, 38, '0000-00-00', 'XBOX Live Account', 'My own account to XBOX live, 1 year subscription', 50, 'http://images.google.com/images?q=tbn:YhANt7QrDlkJ:liveduet.tripod.com/sitebuildercontent', 'http://www.xbox.com/en-US/Live/about/default.htm');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `state`
+-- 
+
+DROP TABLE IF EXISTS `state`;
+CREATE TABLE IF NOT EXISTS `state` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `name` varchar(100) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=7 ;
+
+-- 
+-- Dumping data for table `state`
+-- 
+
+INSERT INTO `state` (`id`, `name`) VALUES (1, 'active');
+INSERT INTO `state` (`id`, `name`) VALUES (2, 'inactive');
+INSERT INTO `state` (`id`, `name`) VALUES (3, 'add');
+INSERT INTO `state` (`id`, `name`) VALUES (4, 'remove');
+INSERT INTO `state` (`id`, `name`) VALUES (5, 'owe prize');
+INSERT INTO `state` (`id`, `name`) VALUES (6, 'prize given');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `style`
+-- 
+
+DROP TABLE IF EXISTS `style`;
+CREATE TABLE IF NOT EXISTS `style` (
+  `id` smallint(6) NOT NULL default '0',
+  `css` text NOT NULL,
+  `template` text NOT NULL,
+  `name` varchar(20) NOT NULL default '',
+  `description` text NOT NULL,
+  `image` varchar(20) NOT NULL default '',
+  `author` varchar(20) NOT NULL default '',
+  `rating` char(1) NOT NULL default '',
+  `date` varchar(20) NOT NULL default '',
+  PRIMARY KEY  (`id`),
+  KEY `id` (`id`)
+) TYPE=MyISAM;
+
+-- 
+-- Dumping data for table `style`
+-- 
+
+INSERT INTO `style` (`id`, `css`, `template`, `name`, `description`, `image`, `author`, `rating`, `date`) VALUES (0, 'blue.css\r\n\r\n', 'default.tmpl', 'Blue', 'This is the plain blue ', 'thumbnail.jpg', 'Anthony DeStefano', '1', '2003-08-17 00:00:00');
+INSERT INTO `style` (`id`, `css`, `template`, `name`, `description`, `image`, `author`, `rating`, `date`) VALUES (2, 'aqua.css', 'default.tmpl', 'Aqua', '', 'thumbnail.jpg', 'Anthony Destefano', '2', '');
+INSERT INTO `style` (`id`, `css`, `template`, `name`, `description`, `image`, `author`, `rating`, `date`) VALUES (1, 'brown.css\r\n\r\n', 'default.tmpl', 'Brown', 'Traditional in light brown.', 'thumbnail.jpg', '37', '2', '00:55:05');
+INSERT INTO `style` (`id`, `css`, `template`, `name`, `description`, `image`, `author`, `rating`, `date`) VALUES (3, 'sun.css', 'default.tmpl', 'Sun', 'Warm sunshine for you ;-)', 'thumbnail.jpg', 'Hunter', '7', '2005-08-27');
+INSERT INTO `style` (`id`, `css`, `template`, `name`, `description`, `image`, `author`, `rating`, `date`) VALUES (4, 'bleu-cheese.css', 'default.tmpl', 'Bleu-cheese', 'A lovely spat of molded sweet bleu Cheesie love. ;-)~', 'thumbnail.jpg', 'Hunter', '5', '');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `type`
+-- 
+
+DROP TABLE IF EXISTS `type`;
+CREATE TABLE IF NOT EXISTS `type` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `name` varchar(100) NOT NULL default '',
+  `description` longtext NOT NULL,
+  `image` longtext NOT NULL,
+  `authorID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=4 ;
+
+-- 
+-- Dumping data for table `type`
+-- 
+
+INSERT INTO `type` (`id`, `name`, `description`, `image`, `authorID`) VALUES (1, 'Household-Family', 'Chores based on average household family.', '', 0);
+INSERT INTO `type` (`id`, `name`, `description`, `image`, `authorID`) VALUES (2, 'School-Classroom', 'Chores and activities related to teaching including Public and Private Schools.', '', 0);
+INSERT INTO `type` (`id`, `name`, `description`, `image`, `authorID`) VALUES (3, 'Behavior Modification-Social work', 'Chores and activities based around Behavior Modification.', '', 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `user`
+-- 
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` mediumint(14) unsigned NOT NULL auto_increment,
+  `name` varchar(50) NOT NULL default '',
+  `username` varchar(20) NOT NULL default '',
+  `rating` varchar(10) NOT NULL default '',
+  `admin` char(1) NOT NULL default '',
+  `email` varchar(100) NOT NULL default '',
+  `password` text NOT NULL,
+  `style` smallint(6) NOT NULL default '0',
+  `typeID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
+  KEY `id` (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=85 ;
+
+-- 
+-- Dumping data for table `user`
+-- 
+
+INSERT INTO `user` (`id`, `name`, `username`, `rating`, `admin`, `email`, `password`, `style`, `typeID`) VALUES (37, 'Anthony', 'god', '10', '1', 'anthony.destefano@gmail.com', 'go', 3, 1);
+INSERT INTO `user` (`id`, `name`, `username`, `rating`, `admin`, `email`, `password`, `style`, `typeID`) VALUES (38, 'Anthony', 'hunter', '10', '1', 'we@stupidpeople.net', 'pupp1es', 4, 1);
+INSERT INTO `user` (`id`, `name`, `username`, `rating`, `admin`, `email`, `password`, `style`, `typeID`) VALUES (39, 'Alyssa', 'alyssa', '10', '0', 'BOO@hoo.com', 'test', 0, 1);
+INSERT INTO `user` (`id`, `name`, `username`, `rating`, `admin`, `email`, `password`, `style`, `typeID`) VALUES (40, 'nick', 'nick', '4', '', 'nicholas.destefano@gmail.com', 'nick', 2, 1);
+INSERT INTO `user` (`id`, `name`, `username`, `rating`, `admin`, `email`, `password`, `style`, `typeID`) VALUES (41, 'Harley', 'Harley', '10', '', 'mets82595@yahoo.com', 'go', 0, 1);
+INSERT INTO `user` (`id`, `name`, `username`, `rating`, `admin`, `email`, `password`, `style`, `typeID`) VALUES (84, 'tester tested', 'tester1', '-1', '1', 'tester1@you.com', 'tester1', 0, 0);
+INSERT INTO `user` (`id`, `name`, `username`, `rating`, `admin`, `email`, `password`, `style`, `typeID`) VALUES (82, 'John Doe', 'teacher1', '-1', '1', 'TEACHER1', 'go', 0, 3);
+INSERT INTO `user` (`id`, `name`, `username`, `rating`, `admin`, `email`, `password`, `style`, `typeID`) VALUES (83, 'kadsfj kdfj', 'ant', '-1', '', 'antme', 'dk', 0, 2);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `user_chore_rel`
+-- 
+
+DROP TABLE IF EXISTS `user_chore_rel`;
+CREATE TABLE IF NOT EXISTS `user_chore_rel` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `userID` mediumint(9) NOT NULL default '0',
+  `choreID` mediumint(9) NOT NULL default '0',
+  `frequencyID` mediumint(9) NOT NULL default '0',
+  `stateID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=2 ;
+
+-- 
+-- Dumping data for table `user_chore_rel`
+-- 
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `user_contact`
+-- 
+
+DROP TABLE IF EXISTS `user_contact`;
+CREATE TABLE IF NOT EXISTS `user_contact` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `userID` mediumint(9) NOT NULL default '0',
+  `first` varchar(100) NOT NULL default '',
+  `last` varchar(100) NOT NULL default '',
+  `phone` varchar(20) NOT NULL default '',
+  `street` varchar(100) NOT NULL default '',
+  `city` varchar(100) NOT NULL default '',
+  `state` char(2) NOT NULL default '',
+  `zip` varchar(100) NOT NULL default '',
+  `Country` varchar(100) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=16 ;
+
+-- 
+-- Dumping data for table `user_contact`
+-- 
+
+INSERT INTO `user_contact` (`id`, `userID`, `first`, `last`, `phone`, `street`, `city`, `state`, `zip`, `Country`) VALUES (15, 84, 'tester', 'tested', '3434', '34asdfasdf', 'asdfa sd', 'as', 'asdf', 'us-en');
+INSERT INTO `user_contact` (`id`, `userID`, `first`, `last`, `phone`, `street`, `city`, `state`, `zip`, `Country`) VALUES (13, 82, 'John', 'Doe', '343-343-34343', 'asdfasdfasdf', 'asdfasdf', 'NY', '2343434', 'us-en');
+INSERT INTO `user_contact` (`id`, `userID`, `first`, `last`, `phone`, `street`, `city`, `state`, `zip`, `Country`) VALUES (14, 83, 'kadsfj', 'kdfj', 'dkfj', 'dkfjl;al', 'lasdkfj', 'ny', '343434', 'us-en');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `user_group_rel`
+-- 
+
+DROP TABLE IF EXISTS `user_group_rel`;
+CREATE TABLE IF NOT EXISTS `user_group_rel` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `userID` mediumint(9) NOT NULL default '0',
+  `familyID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=13 ;
+
+-- 
+-- Dumping data for table `user_group_rel`
+-- 
+
+INSERT INTO `user_group_rel` (`id`, `userID`, `familyID`) VALUES (6, 15, 1);
+INSERT INTO `user_group_rel` (`id`, `userID`, `familyID`) VALUES (5, 15, 2);
+INSERT INTO `user_group_rel` (`id`, `userID`, `familyID`) VALUES (4, 15, 1);
+INSERT INTO `user_group_rel` (`id`, `userID`, `familyID`) VALUES (7, 37, 1);
+INSERT INTO `user_group_rel` (`id`, `userID`, `familyID`) VALUES (8, 36, 2);
+INSERT INTO `user_group_rel` (`id`, `userID`, `familyID`) VALUES (9, 38, 1);
+INSERT INTO `user_group_rel` (`id`, `userID`, `familyID`) VALUES (10, 40, 1);
+INSERT INTO `user_group_rel` (`id`, `userID`, `familyID`) VALUES (11, 37, 2);
+INSERT INTO `user_group_rel` (`id`, `userID`, `familyID`) VALUES (12, 39, 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `user_prize_rel`
+-- 
+
+DROP TABLE IF EXISTS `user_prize_rel`;
+CREATE TABLE IF NOT EXISTS `user_prize_rel` (
+  `id` mediumint(9) NOT NULL auto_increment,
+  `userID` mediumint(9) NOT NULL default '0',
+  `prizeID` mediumint(9) NOT NULL default '0',
+  `stateID` mediumint(9) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM AUTO_INCREMENT=82 ;
+
+-- 
+-- Dumping data for table `user_prize_rel`
+-- 
+
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (71, 41, 48, 1);
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (57, 39, 37, 1);
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (56, 39, 36, 1);
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (70, 41, 36, 1);
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (72, 41, 42, 1);
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (76, 37, 34, 1);
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (55, 37, 41, 1);
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (80, 38, 48, 1);
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (79, 38, 50, 1);
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (78, 40, 48, 1);
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (66, 38, 36, 1);
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (69, 41, 34, 1);
+INSERT INTO `user_prize_rel` (`id`, `userID`, `prizeID`, `stateID`) VALUES (74, 37, 36, 1);

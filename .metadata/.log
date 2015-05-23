@@ -1,0 +1,36 @@
+!SESSION May 09, 2005 16:10:39.798 ---------------------------------------------
+eclipse.buildId=M200409161125
+java.version=1.4.2_05
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+
+!ENTRY org.eclipse.osgi May 09, 2005 16:10:39.798
+!MESSAGE While loading class "net.sourceforge.phpeclipse.PHPeclipsePlugin$4", thread "Worker-3" timed out waiting (5000ms) for thread "main" to finish starting bundle "net.sourceforge.phpeclipse". To avoid deadlock, thread "Worker-3" is proceeding but "net.sourceforge.phpeclipse.PHPeclipsePlugin$4" may not be fully initialized.
+!STACK 0
+java.lang.Exception: Generated exception.
+	at org.eclipse.core.runtime.adaptor.EclipseClassLoader.findLocalClass(EclipseClassLoader.java:102)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findLocalClass(BundleLoader.java:371)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClass(BundleLoader.java:402)
+	at org.eclipse.osgi.framework.adaptor.core.AbstractClassLoader.loadClass(AbstractClassLoader.java:93)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+	at net.sourceforge.phpeclipse.PHPeclipsePlugin$3.run(PHPeclipsePlugin.java:1189)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:66)
+!SESSION May 09, 2005 16:12:50.606 ---------------------------------------------
+eclipse.buildId=M200409161125
+java.version=1.4.2_05
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+
+!ENTRY org.eclipse.osgi May 09, 2005 16:12:50.606
+!MESSAGE While loading class "net.sourceforge.phpeclipse.PHPeclipsePlugin$4", thread "Worker-1" timed out waiting (5000ms) for thread "main" to finish starting bundle "net.sourceforge.phpeclipse". To avoid deadlock, thread "Worker-1" is proceeding but "net.sourceforge.phpeclipse.PHPeclipsePlugin$4" may not be fully initialized.
+!STACK 0
+java.lang.Exception: Generated exception.
+	at org.eclipse.core.runtime.adaptor.EclipseClassLoader.findLocalClass(EclipseClassLoader.java:102)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findLocalClass(BundleLoader.java:371)
+	at org.eclipse.osgi.framework.internal.core.BundleLoader.findClass(BundleLoader.java:402)
+	at org.eclipse.osgi.framework.adaptor.core.AbstractClassLoader.loadClass(AbstractClassLoader.java:93)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClassInternal(Unknown Source)
+	at net.sourceforge.phpeclipse.PHPeclipsePlugin$3.run(PHPeclipsePlugin.java:1189)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:66)

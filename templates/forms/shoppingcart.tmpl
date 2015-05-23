@@ -1,0 +1,39 @@
+
+
+
+
+<!-- /templates/forms/create_chore.tmpl -->
+<form action="/zbin/prize_order.php" method="post">
+<input type="hidden" name="prizeID" value="##PRIZEID##" />
+<table border="0" class="cart-table">
+
+<tr>
+ <td colspan="2" align="left"><a href="##PRIZEURL##" target="_blank"><img src="##PRIZEIMAGE##" border="0"/></a></td>
+</tr>
+
+<tr>
+ <td class="cart-prize-name">##NAME##</td>
+ <td class="cart-prize-chorepoints" align="right">Costs: ##CHOREPOINTS##</td>
+</tr>
+
+<tr>
+ <td colspan="2" align="right">You Have: <span class="cart-prize-chorepoints">##USERCHOREPOINTS##</span></td>
+</tr>
+
+<tr>
+ <td colspan="2"><hr class="cart-divider"></td>
+</tr>
+
+
+<tr>
+ <td colspan="2" align="right">Your Balance will be: <span class="cart-prize-chorepoints">##USERCHOREPOINTBALANCE##</span></td>
+</tr>
+
+
+
+
+<tr><td align="center" colspan="2"><input type="submit" value="Order" /></td></tr>
+
+</table>
+</form>
+	

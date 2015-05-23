@@ -1,0 +1,129 @@
+               type   [type]
+                   category [category][typeID]
+                        user group [ usergroup][typeID]
+                            user       [user][typeID]                
+
+type:
+   - defines global partitions
+category: 
+   - defines subgroups based on type
+usergroup:
+    - defines groups for filtering chores, prizes and users
+user:
+    - actor in a 'type'
+    - creates relationships with
+        - usergroup
+        - chore
+        - prize
+
+
+ user:
+  - is a type
+     [user][typeID]  (family,school,treatment)
+  - user can pick chores (chores they will do)
+      [user][chore][user_chore_rel][usergroupID]
+  - user can create chores
+     [user][chore][usergroupID]    
+  - 
+
+  [ type             ]
+  -------------------
+      - household
+      - school
+      - treatement center
+      - relationships
+   
+  
+ [ category     ]
+ ------------------   
+     HOUSEHOLD  
+      - pets/bedding
+      - kitchen/surfaces 
+
+     SCHOOL  
+      - homework/paper
+      - clean up area
+
+     TREATMENT CENTER
+      - No Tantrums
+      - Share with others
+
+     RELATIONSHIPS
+      - Spend time with me
+      - Dinner date
+
+   [ usergroup     ]
+    -------------
+     HOUSEHOLD  
+     - family name
+     - Group of families
+
+     SCHOOL  
+      -  Classroom
+      -  Teacher
+
+     TREATMENT CENTER
+      - groups of patients
+      - doctors
+
+     RELATIONSHIPS
+        - relationship (david and jane)
+        - friends (group of people)
+       
+
+   [ user     ]
+   ------------
+        HOUSEHOLD  
+       - Parent
+       -  child
+
+     SCHOOL  
+      -  Teacher
+      -  student
+
+     TREATMENT CENTER
+      - doctor
+      - patient
+
+     RELATIONSHIPS
+      - lovers
+      - friends  
+
+
+
+
+
+
+
+
+ admin
+   - family
+  
+
+ user 
+  -  families
+  - chores
+    - new
+    - Active chores
+    - Inactive chores
+  - Prizes
+    - new
+    - wish list
+    - ordered prizes
+
+
+
+
+ user can see all chores in their family
+ user can select chores from family list
+ user can create new chores
+ user can activate a chore
+ user can deactivate a chore
+
+ user can see all prizes in their familly
+ user can add prizes from family into wish list
+ user can create new prizes
+ 
+ 
+user can save a wish list of favorite prizes
+   

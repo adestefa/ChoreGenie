@@ -1,0 +1,162 @@
+ 
+  log
+  style
+  family
+   
+  user
+  user_family_rel
+  user_chore_rel
+  account
+ 
+  chore
+  chorePoint
+  chore_family_rel
+
+   prize
+   prizeRequest
+ 
+  
+    
+     user (many to many) family
+     user (many to many) chore   
+     family (many to many) chore
+
+   
+ family
+     users
+     chores 
+     prizes
+     prize_request
+     tickets
+ 
+
+
+chorePoint = $.25;			
+
+
+IpodShuffle = 99.00
+exchangeRate =0.25
+
+$chorePointValue =  $moneyValue / $exchangeRate
+
+
+------------
+account
+-------------
+id
+userID
+balance
+dateCreated
+
+
+-----------
+chore
+-------------
+id
+userID
+dateCreated
+name
+description
+image
+chorePointValueID
+complexityID
+
+
+
+---------------
+chorePoint
+----------------
+id
+dateCreated
+adminID
+value
+userID
+serial
+dateExchanged
+
+
+---------
+family
+---------
+id
+name
+timestamp
+
+
+-----
+log
+------
+id
+timestamp
+userID
+name
+
+------
+prize
+-------
+id
+authorID
+dateCreated
+name
+desc
+moneyValue
+image
+
+------------------
+prizeRequest
+-------------------
+id
+userID
+adminID
+name
+desciption
+image
+dateCreated
+status
+dateConfirmed
+
+
+-------
+style
+---------
+id
+css
+template
+name
+description
+image
+author
+rating
+date
+
+
+-------
+user
+--------
+id
+name
+username
+rating
+admin
+email
+password
+style
+
+
+-----------------------
+user_family_rel
+-----------------------
+id
+userID
+familyID
+
+
+
+-----------------------
+chore_family_rel
+-----------------------
+id
+userID
+familyID
+
+
